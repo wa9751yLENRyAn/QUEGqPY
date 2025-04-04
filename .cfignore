@@ -1,0 +1,15 @@
+product/
+release/
+integration_tests/
+build/
+.git/
+docs/
+acceptance-tests/
+.vscode
+ci/
+hack/
+k8s/
+scripts/
+.github/
+
+!pkg/brokerpak/examples/manifest.yml
