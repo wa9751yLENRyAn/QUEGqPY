@@ -1,0 +1,49 @@
+<Project>
+  <PropertyGroup>
+    <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+    <MicrosoftPackageVersion Condition="'$(TargetFramework)' == 'net6.0'">6.0.0</MicrosoftPackageVersion>
+    <MicrosoftPackageVersion Condition="'$(TargetFramework)' == 'net7.0'">7.0.0</MicrosoftPackageVersion>
+    <MicrosoftPackageVersion Condition="'$(TargetFramework)' == 'net8.0'">8.0.0</MicrosoftPackageVersion>
+    <BenchmarkDotNetPackageVersion>0.13.1</BenchmarkDotNetPackageVersion>
+    <MSTestPackageVersion>2.2.3</MSTestPackageVersion>
+    <MicrosoftTeskSdkPackageVersion>16.9.4</MicrosoftTeskSdkPackageVersion>
+    <CoverletPackageVersion>3.0.2</CoverletPackageVersion>
+    <MoqPackageVersion>4.16.1</MoqPackageVersion>
+    <NSubstitutePackageVersion>4.4.0</NSubstitutePackageVersion>
+    <MapsterPackageVersion>7.3.0</MapsterPackageVersion>
+    <DaprPackageVersion>1.10.0</DaprPackageVersion>
+    <GoogleProtobufPackageVersion>3.19.1</GoogleProtobufPackageVersion>
+    <MedallionDistributedLockPackageVersion>1.0.4</MedallionDistributedLockPackageVersion>
+    <FluentValidationPackageVersion>11.1.0</FluentValidationPackageVersion>
+    <FluentValidationAspNetCorePackageVersion>11.1.2</FluentValidationAspNetCorePackageVersion>
+    <StackExchangeRedisPackageVersion>2.2.4</StackExchangeRedisPackageVersion>
+    <NESTPackageVersion>7.17.4</NESTPackageVersion>
+    <IdentityPackageVersion>7.5.0</IdentityPackageVersion>
+    <IdentityModelPackageVersion>6.0.0</IdentityModelPackageVersion>
+
+    <OpenTelemetryVersion>1.5.1</OpenTelemetryVersion>
+    <OpenTelemetryContribVersion>1.5.0</OpenTelemetryContribVersion>
+    <OpenTelemetryInstrumentationVersion>1.0.0-rc9.10</OpenTelemetryInstrumentationVersion>
+
+    <PackageId>$(AssemblyName)</PackageId>
+    <PackageIcon>packageIcon.png</PackageIcon>
+    <Authors>MASA Stack</Authors>
+    <Copyright>© MASA Stack Corporation. All rights reserved.</Copyright>
+    <PackageIconUrl>packageIcon.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/masastack/MASA.Framework</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <RepositoryRoot>$(MSBuildThisFileDirectory)</RepositoryRoot>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="$(RepositoryRoot)packageIcon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="$(RepositoryRoot)LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+</Project>
