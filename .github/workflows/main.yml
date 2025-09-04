@@ -20,21 +20,21 @@ jobs:
           password: ${{ secrets.HARBOR_PASSWORD }}
 
       - name: Build and push authentication
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           push: true
           context: ./authentication
           tags: ${{ secrets.HARBOR_URL }}/icat_auth:latest
 
       - name: Build and push icat
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           push: true
           context: ./icat
           tags: ${{ secrets.HARBOR_URL }}/icat_5:latest
 
       - name: Build and push testdata
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           push: true
           context: ./testdata
