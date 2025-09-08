@@ -1,0 +1,46 @@
+FROM python:3.11-slim
+
+# System dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libpq-dev \
+    postgresql-client \
+    curl \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Airflow and Python dependencies
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Create airflow user and group (UID/GID = 50000)
+RUN groupadd -g 1000 airflow && \
+    useradd -u 1000 -g airflow -m airflow
+
+# Prepare Airflow working directory and logs
+WORKDIR /opt/airflow
+RUN mkdir -p /opt/airflow/logs && \
+    chown -R airflow:airflow /opt/airflow
+
+RUN mkdir -p /opt/airflow/target
+RUN mkdir -p /opt/airflow/data
+RUN mkdir -p /opt/airflow/reports
+RUN mkdir -p /opt/airflow/dags
+RUN mkdir -p /opt/airflow/scripts
+RUN mkdir -p /home/airflow/.dbt
+
+# Copy DBT profile to expected location
+COPY .dbt/profiles.yml /home/airflow/.dbt/profiles.yml
+RUN chown -R airflow:airflow /home/airflow/.dbt
+RUN chown -R airflow:airflow /opt/airflow/logs
+RUN chown -R airflow:airflow /opt/airflow/target
+RUN chown -R airflow:airflow /opt/airflow/data
+RUN chown -R airflow:airflow /opt/airflow/reports
+RUN chown -R airflow:airflow /opt/airflow/dags
+RUN chown -R airflow:airflow /opt/airflow/scripts
+
+# Switch to airflow user
+USER airflow
+
+# Airflow log level (optional)
+ENV AIRFLOW__CORE__LOGGING_LEVEL=INFO
