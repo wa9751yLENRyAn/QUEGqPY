@@ -1,0 +1,13 @@
+[allowlist]
+  description = "Global Allowlist"
+
+  # Ignore based on any subset of the file path
+  paths = [
+    # Ignore all example certs
+    '''java\/steps\/yaks-http\/src\/main\/resources\/keystore\/.*\.pem$''',
+    '''java\/steps\/yaks-http\/src\/main\/resources\/keystore\/.*\.key$''',
+    '''java\/steps\/yaks-http\/src\/main\/resources\/keystore\/.*\.jks$''',
+    '''java\/steps\/yaks-http\/src\/main\/resources\/keystore\/.*\.crt$''',
+    '''java\/steps\/yaks-http\/src\/main\/resources\/keystore\/.*\.cert$''',
+    '''java\/steps\/yaks-http\/src\/main\/resources\/keystore\/.*\.p12$''',
+  ]
