@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wandernest - Personalized AI Trip Planner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 20px 0;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 2rem;
+        }
+
+        .logo h1 {
+            font-weight: 600;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #64b5f6;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 0;
+            background: white;
+            border-radius: 20px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #182848;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: #555;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #182848;
+        }
+
+        .demo {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 60px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .demo h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #182848;
+        }
+
+        .demo-content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .demo-text {
+            flex: 1;
+        }
+
+        .demo-visual {
+            flex: 1;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 20px;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .tech-stack {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+
+        .tech-item {
+            background: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .tech-item i {
+            font-size: 1.5rem;
+            color: #4b6cb7;
+        }
+
+        footer {
+            background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 40px 0;
+            border-radius: 20px 20px 0 0;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .demo-content {
+                flex-direction: column;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-globe-americas"></i>
+                    <h1>WandernestAI</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#demo">How It Works</a></li>
+                        <li><a href="#tech">Technology</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <h2>From Social Scroll to Seamless Soulcation</h2>
+            <p>WandernestAI is an intelligent trip planner that creates personalized itineraries by understanding your preferences, budget, and real-time conditions - all with one-click booking.</p>
+            <a href="#demo" class="btn">Plan Your Trip</a>
+        </section>
+
+        <section id="features" class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-route"></i>
+                </div>
+                <h3>The Itinerary Composer</h3>
+                <p>Dynamically generates optimized, multi-stop daily plans that balance must-see spots with discovered gems.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-hashtag"></i>
+                </div>
+                <h3>The Social Sonar</h3>
+                <p>Scans Instagram and Twitter to detect and validate trending, authentic locations before they become mainstream.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-map-marked-alt"></i>
+                </div>
+                <h3>Travel Pulse Map</h3>
+                <p>A real-time visual mood map of a city, showing area-wise activity levels and trending spots.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <h3>Sentinel Alert Engine</h3>
+                <p>Proactive monitoring for real-world events that auto-generates intelligent alternative plans.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h3>Concierge Dialogue</h3>
+                <p>Experience seamless trip planning by having a conversation with our system in preferred languages.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <h3>One-Click Booking</h3>
+                <p>Secure booking and payment for the entire curated itinerary through integrated partners.</p>
+            </div>
+        </section>
+
+        <section id="demo" class="demo">
+            <h2>How WandernestAI Works</h2>
+            <div class="demo-content">
+                <div class="demo-text">
+                    <h3>Intelligent Trip Planning in 3 Simple Steps</h3>
+                    <p>Our multi-agent system works together to create your perfect itinerary:</p>
+                    <ol>
+                        <li><strong>Tell us your preferences</strong> - Budget, interests, duration, and travel style</li>
+                        <li><strong>AI agents work their magic</strong> - Analyzing data from multiple sources to create your plan</li>
+                        <li><strong>Review & book with one click</strong> - Get your personalized itinerary and confirm your trip</li>
+                    </ol>
+                    <p>The system continues monitoring during your trip, providing real-time updates and adjustments as needed.</p>
+                    <a href="#" class="btn">Get Started Now</a>
+                </div>
+                <div class="demo-visual">
+                    <i class="fas fa-laptop-code" style="font-size: 4rem; color: #4b6cb7; margin-bottom: 20px;"></i>
+                    <h3>Interactive Demo</h3>
+                    <p>Experience the power of AI-driven trip planning</p>
+                    <div style="background: #4b6cb7; color: white; padding: 10px 20px; border-radius: 20px; margin-top: 20px;">
+                        Try Our Prototype
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tech" class="tech">
+            <h2 style="text-align: center; margin-bottom: 40px; color: #182848;">Our Technology Stack</h2>
+            <div class="tech-stack">
+                <div class="tech-item">
+                    <i class="fab fa-google"></i>
+                    <span>Google Gemini API</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-brain"></i>
+                    <span>Vertex AI</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <span>Google Maps API</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-database"></i>
+                    <span>Firebase Firestore</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-cloud"></i>
+                    <span>Google Cloud Functions</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-twitter"></i>
+                    <span>Twitter API</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram Graph API</span>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>BigQuery</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>WandernestAI</h3>
+                    <p>The first autonomous travel intelligence system that brings clarity to travel chaos in real-time.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul style="list-style: none;">
+                        <li><a href="#features" style="color: white;">Features</a></li>
+                        <li><a href="#demo" style="color: white;">How It Works</a></li>
+                        <li><a href="#tech" style="color: white;">Technology</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-envelope"></i> info@WandernestAI.com</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 WandernestAI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple interactive demo functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const featureCards = document.querySelectorAll('.feature-card');
+            
+            featureCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                });
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
