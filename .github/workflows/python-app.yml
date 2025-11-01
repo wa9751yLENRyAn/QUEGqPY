@@ -23,7 +23,7 @@ jobs:
       run: |
         py2ipynb '*/*.py'
     - name: Commit changes
-      uses: EndBug/add-and-commit@v4
+      uses: EndBug/add-and-commit@v9
       with:
         author_name: graykode
         author_email: nlkey2022@gmail.com
